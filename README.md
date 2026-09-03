@@ -125,7 +125,7 @@ Create a `.env.local` file when connecting Sanity:
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2026-09-03
-SANITY_API_READ_TOKEN=your_read_token_if_needed
+SANITY_AUTH_TOKEN=your_write_token_for_seeding_only
 SANITY_WEBHOOK_SECRET=your_webhook_secret
 ```
 
@@ -145,3 +145,4 @@ If Sanity is connected, also configure any required webhook-based revalidation a
 - The homepage branding is `Newaz Ali Ideal School`.
 - Fonts are loaded from Google Fonts in `app/layout.tsx`.
 - The site uses a visual scaffold that can be connected to Sanity without changing the route structure.
+
