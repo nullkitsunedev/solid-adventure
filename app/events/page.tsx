@@ -3,6 +3,8 @@ import { BsCalendar2, BsClock, BsGeoAlt } from "react-icons/bs";
 import { getEvents, resolveImageSource } from "@/sanity/lib/cms";
 import { formatDate, formatTime, truncateWords } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 export default async function EventsPage() {
   const events = await getEvents();
 

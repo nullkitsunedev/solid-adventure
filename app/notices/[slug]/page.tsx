@@ -4,6 +4,8 @@ import { BsCalendar2 } from "react-icons/bs";
 import { getNoticeBySlug, getNotices } from "@/sanity/lib/cms";
 import { formatDate } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 const badgeClasses: Record<string, string> = {
   urgent: "bg-red-600 text-white",
   high: "bg-amber-400 text-black",

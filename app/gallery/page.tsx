@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { getGalleryImages, resolveImageSource } from "@/sanity/lib/cms";
 
+export const dynamic = "force-dynamic";
+
 export default async function GalleryPage() {
   const galleryImages = await getGalleryImages();
 
