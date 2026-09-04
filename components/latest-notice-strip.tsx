@@ -1,15 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { BsBellFill } from "react-icons/bs";
-import { notices } from "@/lib/site-data";
+import { getNotices } from "@/sanity/lib/cms";
 
-const latestNotices = [...notices]
-  .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-  .slice(0, 5);
+export async function LatestNoticeStrip() {
+  const latestNotices = (await getNotices())
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .slice(0, 5);
 
-export function LatestNoticeStrip() {
   if (latestNotices.length === 0) {
     return null;
   }
