@@ -1,49 +1,35 @@
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { parseBody } from "next-sanity/webhook";
 
-function getExpectedSecret() {
-  return process.env.SANITY_WEBHOOK_SECRET ?? "";
+type WebhookPayload = {
+  _type?: string;
+};
+
+function getSecret() {
+  return process.env.SANITY_REVALIDATE_SECRET ?? process.env.SANITY_WEBHOOK_SECRET ?? "";
 }
 
-async function handleRevalidate(request: NextRequest) {
-  const payload = (await request.clone().json().catch(() => null)) as
-    | { secret?: string; slug?: string; noticeSlug?: string }
-    | null;
+export async function POST(request: NextRequest) {
+  const secret = getSecret();
 
-  const expectedSecret = getExpectedSecret();
-  const receivedSecret =
-    request.nextUrl.searchParams.get("secret") ??
-    request.headers.get("x-sanity-secret") ??
-    request.headers.get("x-webhook-secret") ??
-    request.headers.get("authorization")?.replace(/^Bearer\s+/i, "") ??
-    payload?.secret ??
-    "";
-
-  if (expectedSecret && receivedSecret !== expectedSecret) {
-    return NextResponse.json({ revalidated: false, message: "Invalid secret" }, { status: 401 });
+  if (!secret) {
+    return NextResponse.json({ revalidated: false, message: "Missing webhook secret" }, { status: 500 });
   }
 
-  const slug = payload?.slug ?? payload?.noticeSlug ?? request.nextUrl.searchParams.get("slug") ?? "";
+  const { isValidSignature, body } = await parseBody<WebhookPayload>(request, secret, true);
+
+  if (!isValidSignature) {
+    return NextResponse.json({ revalidated: false, message: "Invalid signature" }, { status: 401 });
+  }
 
   revalidatePath("/notices");
   revalidatePath("/events");
   revalidatePath("/gallery");
 
-  if (slug) {
-    revalidatePath(`/notices/${slug}`);
-  }
-
   return NextResponse.json({
     revalidated: true,
-    paths: ["/notices", "/events", "/gallery", slug ? `/notices/${slug}` : null].filter(Boolean),
+    type: body?._type ?? null,
     timestamp: Date.now(),
   });
-}
-
-export async function POST(request: NextRequest) {
-  return handleRevalidate(request);
-}
-
-export async function GET(request: NextRequest) {
-  return handleRevalidate(request);
 }
