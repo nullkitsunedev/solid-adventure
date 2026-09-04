@@ -34,13 +34,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="site-container py-16">
+            <section className="site-container py-16">
+        <div className="mb-8 text-center">
+          <span className="eyebrow justify-center">Impact</span>
+          <h2 className="mt-3 font-heading text-3xl font-extrabold text-school-ink sm:text-4xl">
+            Our Impact in Numbers
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base">
+            A quick look at the scale of our community, academic results, and long-term commitment to excellence.
+          </p>
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {[
-            { value: 5000, suffix: "+", label: "students learned" },
-            { value: 20, suffix: "+", label: "teachers" },
-            { value: 95, suffix: "%", label: "board exam passing rate" },
-            { value: establishmentYears, suffix: "+", label: "years since 2007" },
+            { value: 5000, suffix: "+", label: "Proud graduates" },
+            { value: 20, suffix: "+", label: "Teachers" },
+            { value: 95, suffix: "%", label: "Student satisfaction" },
+            { value: establishmentYears, suffix: "+", label: "Years of Excellence since 2007" },
           ].map((item) => (
             <div key={item.label} className="stat-card h-full">
               <div className="p-6">
@@ -164,4 +174,5 @@ export default function HomePage() {
     </>
   );
 }
+
 

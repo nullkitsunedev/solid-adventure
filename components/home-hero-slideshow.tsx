@@ -8,6 +8,7 @@ const heroImages = [
   { src: "/images/school1.jpg", alt: "Newaz Ali Ideal School campus view 1" },
   { src: "/images/school2.jpg", alt: "Newaz Ali Ideal School campus view 2" },
   { src: "/images/school3.jpg", alt: "Newaz Ali Ideal School campus view 3" },
+  { src: "/images/school4.webp", alt: "Newaz Ali Ideal School campus view 4" },
 ];
 
 const driftClasses = [
@@ -15,6 +16,7 @@ const driftClasses = [
   "hero-slide-drift-b",
   "hero-slide-drift-c",
   "hero-slide-drift-d",
+  "hero-slide-drift-e",
 ];
 
 const driftOffsetClasses = [
@@ -22,6 +24,7 @@ const driftOffsetClasses = [
   "hero-slide-offset-b",
   "hero-slide-offset-c",
   "hero-slide-offset-d",
+  "hero-slide-offset-e",
 ];
 
 export function HomeHeroSlideshow() {

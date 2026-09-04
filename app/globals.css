@@ -149,8 +149,14 @@ label,
   overflow: hidden;
 }
 
+
 .hero-media {
   overflow: hidden;
+}
+
+
+.hero-slide {
+  will-change: opacity, transform, filter;
 }
 
 .hero-overlay {
@@ -238,6 +244,11 @@ label,
   animation-duration: 17s;
 }
 
+.hero-slide-drift-e {
+  animation-name: heroParallaxDriftE;
+  animation-duration: 19s;
+}
+
 .hero-slide-offset-a {
   animation-delay: -2s;
 }
@@ -252,6 +263,10 @@ label,
 
 .hero-slide-offset-d {
   animation-delay: -11s;
+}
+
+.hero-slide-offset-e {
+  animation-delay: -14s;
 }
 
 @keyframes heroToneShift {
@@ -311,15 +326,44 @@ label,
   }
 }
 
+@keyframes heroParallaxDriftE {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    transform: translate3d(-0.9%, -0.4%, 0) scale(1.056);
+  }
+}
+
+.notice-ticker-track {
+  animation: noticeTicker 28s linear infinite;
+  will-change: transform;
+}
+
+.notice-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes noticeTicker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-transition,
   .hero-copy,
   .hero-overlay-shift,
-  .hero-slide-active {
+  .hero-slide-active,
+  .notice-ticker-track {
     animation: none !important;
   }
 }
-
 @keyframes pageEnter {
   from {
     opacity: 0;
@@ -331,7 +375,6 @@ label,
     transform: translateY(0);
   }
 }
-
 
 
 

@@ -4,6 +4,7 @@ import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { LatestNoticeStrip } from "@/components/latest-notice-strip";
 import { PageTransition } from "@/components/page-transition";
 
 const manrope = Manrope({
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <div className="page-shell">
           <SiteHeader />
+          <LatestNoticeStrip />
           <PageTransition>{children}</PageTransition>
           <SiteFooter />
         </div>

@@ -15,13 +15,6 @@ export const noticeType = defineType({
     }),
     defineField({ name: "content", title: "Content", type: "text", rows: 5, validation: (Rule) => Rule.required() }),
     defineField({
-      name: "priority",
-      title: "Priority",
-      type: "string",
-      options: { list: ["urgent", "high", "medium", "low"] },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "targetAudience",
       title: "Target Audience",
       type: "string",

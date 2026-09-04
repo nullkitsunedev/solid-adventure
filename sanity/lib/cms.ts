@@ -42,7 +42,6 @@ type SanityNotice = {
   title: string;
   slug: string;
   content: string;
-  priority: "urgent" | "high" | "medium" | "low";
   targetAudience: string;
   publishDate: string;
   expiryDate?: string | null;
@@ -67,8 +66,8 @@ type SanityGalleryImage = {
   event?: string | null;
 };
 
-const noticesQuery = `*[_type == "notice"] | order(publishDate desc) { title, "slug": slug.current, content, priority, targetAudience, publishDate, expiryDate }`;
-const noticeBySlugQuery = `*[_type == "notice" && slug.current == $slug][0] { title, "slug": slug.current, content, priority, targetAudience, publishDate, expiryDate }`;
+const noticesQuery = `*[_type == "notice"] | order(publishDate desc) { title, "slug": slug.current, content, targetAudience, publishDate, expiryDate }`;
+const noticeBySlugQuery = `*[_type == "notice" && slug.current == $slug][0] { title, "slug": slug.current, content, targetAudience, publishDate, expiryDate }`;
 const eventsQuery = `*[_type == "event"] | order(startDate desc) { title, "slug": slug.current, description, eventType, startDate, endDate, location, image }`;
 const galleryQuery = `*[_type == "galleryImage"] | order(_createdAt desc) { title, "slug": slug.current, caption, image, event }`;
 

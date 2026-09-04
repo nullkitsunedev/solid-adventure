@@ -2,7 +2,6 @@ export type Notice = {
   slug: string;
   title: string;
   content: string;
-  priority: "low" | "medium" | "high" | "urgent";
   targetAudience: string;
   attachmentUrl?: string;
   publishDate: string;
@@ -61,7 +60,6 @@ export const notices: Notice[] = [
     title: "Annual Exam Schedule 2026",
     content:
       "The annual examination schedule for all classes has been published. Students are advised to prepare accordingly and review the subject-wise timetable carefully.",
-    priority: "urgent",
     targetAudience: "all",
     publishDate: "2026-09-01T08:00:00+06:00",
   },
@@ -70,7 +68,6 @@ export const notices: Notice[] = [
     title: "Science Project Fair",
     content:
       "A science project fair will be held in the school auditorium next week. Students from classes 6 through 10 are encouraged to participate.",
-    priority: "high",
     targetAudience: "students",
     publishDate: "2026-08-28T10:00:00+06:00",
   },
@@ -79,7 +76,6 @@ export const notices: Notice[] = [
     title: "Holiday Notice",
     content:
       "The school will remain closed on the upcoming public holiday. Regular classes will resume on the next working day.",
-    priority: "medium",
     targetAudience: "all",
     publishDate: "2026-08-25T10:00:00+06:00",
   },
@@ -141,7 +137,7 @@ export const events: Event[] = [
     eventType: "Sports",
     startDate: "2026-09-12T09:00:00+06:00",
     endDate: "2026-09-12T15:00:00+06:00",
-    location: "School মাঠ",
+    location: "School ???",
     image: "/images/students.jpeg",
   },
   {
