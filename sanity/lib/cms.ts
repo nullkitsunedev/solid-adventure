@@ -16,6 +16,7 @@ const client = projectId
   : null;
 
 const imageBuilder = projectId ? imageUrlBuilder({ projectId, dataset }) : null;
+const useFallbackContent = process.env.NODE_ENV !== "production" && !client;
 
 export function hasSanityConfig() {
   return Boolean(client && imageBuilder);
@@ -72,49 +73,49 @@ const eventsQuery = `*[_type == "event"] | order(startDate desc) { title, "slug"
 const galleryQuery = `*[_type == "galleryImage"] | order(_createdAt desc) { title, "slug": slug.current, caption, image, event }`;
 
 export async function getNotices() {
-  if (!client) {
+  if (!client && useFallbackContent) {
     return fallbackNotices;
   }
 
   try {
-    return await client.fetch<SanityNotice[]>(noticesQuery);
+    return client ? await client.fetch<SanityNotice[]>(noticesQuery) : [];
   } catch {
-    return fallbackNotices;
+    return useFallbackContent ? fallbackNotices : [];
   }
 }
 
 export async function getNoticeBySlug(slug: string) {
-  if (!client) {
+  if (!client && useFallbackContent) {
     return fallbackNotices.find((item) => item.slug === slug) ?? null;
   }
 
   try {
-    return (await client.fetch<SanityNotice | null>(noticeBySlugQuery, { slug })) ?? null;
+    return client ? (await client.fetch<SanityNotice | null>(noticeBySlugQuery, { slug })) ?? null : null;
   } catch {
-    return fallbackNotices.find((item) => item.slug === slug) ?? null;
+    return useFallbackContent ? fallbackNotices.find((item) => item.slug === slug) ?? null : null;
   }
 }
 
 export async function getEvents() {
-  if (!client) {
+  if (!client && useFallbackContent) {
     return fallbackEvents;
   }
 
   try {
-    return await client.fetch<SanityEvent[]>(eventsQuery);
+    return client ? await client.fetch<SanityEvent[]>(eventsQuery) : [];
   } catch {
-    return fallbackEvents;
+    return useFallbackContent ? fallbackEvents : [];
   }
 }
 
 export async function getGalleryImages() {
-  if (!client) {
+  if (!client && useFallbackContent) {
     return fallbackGalleryImages;
   }
 
   try {
-    return await client.fetch<SanityGalleryImage[]>(galleryQuery);
+    return client ? await client.fetch<SanityGalleryImage[]>(galleryQuery) : [];
   } catch {
-    return fallbackGalleryImages;
+    return useFallbackContent ? fallbackGalleryImages : [];
   }
 }
