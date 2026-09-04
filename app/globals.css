@@ -203,9 +203,119 @@ label,
   will-change: opacity, transform;
 }
 
+.hero-overlay-shift {
+  animation: heroToneShift 10s ease-in-out infinite alternate;
+  will-change: opacity, filter;
+}
+
+.hero-slide {
+  will-change: opacity, transform, filter;
+}
+
+.hero-slide-active {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.hero-slide-drift-a {
+  animation-name: heroParallaxDriftA;
+  animation-duration: 15s;
+}
+
+.hero-slide-drift-b {
+  animation-name: heroParallaxDriftB;
+  animation-duration: 18s;
+}
+
+.hero-slide-drift-c {
+  animation-name: heroParallaxDriftC;
+  animation-duration: 21s;
+}
+
+.hero-slide-drift-d {
+  animation-name: heroParallaxDriftD;
+  animation-duration: 17s;
+}
+
+.hero-slide-offset-a {
+  animation-delay: -2s;
+}
+
+.hero-slide-offset-b {
+  animation-delay: -5s;
+}
+
+.hero-slide-offset-c {
+  animation-delay: -8s;
+}
+
+.hero-slide-offset-d {
+  animation-delay: -11s;
+}
+
+@keyframes heroToneShift {
+  0% {
+    opacity: 0.72;
+    filter: brightness(0.94) saturate(0.98);
+  }
+
+  50% {
+    opacity: 0.84;
+    filter: brightness(1.02) saturate(1.04);
+  }
+
+  100% {
+    opacity: 0.78;
+    filter: brightness(0.96) saturate(1);
+  }
+}
+
+@keyframes heroParallaxDriftA {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    transform: translate3d(-1.2%, -0.8%, 0) scale(1.06);
+  }
+}
+
+@keyframes heroParallaxDriftB {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    transform: translate3d(1%, -0.6%, 0) scale(1.055);
+  }
+}
+
+@keyframes heroParallaxDriftC {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    transform: translate3d(-0.6%, 1%, 0) scale(1.058);
+  }
+}
+
+@keyframes heroParallaxDriftD {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.035);
+  }
+
+  100% {
+    transform: translate3d(0.8%, 0.7%, 0) scale(1.05);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-transition,
-  .hero-copy {
+  .hero-copy,
+  .hero-overlay-shift,
+  .hero-slide-active {
     animation: none !important;
   }
 }
@@ -221,3 +331,9 @@ label,
     transform: translateY(0);
   }
 }
+
+
+
+
+
+

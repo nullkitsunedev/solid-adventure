@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsBuilding, BsMortarboardFill, BsTrophy } from "react-icons/bs";
 import { StatCountUp } from "@/components/stat-count-up";
+import { HomeHeroSlideshow } from "@/components/home-hero-slideshow";
 import { getYearSinceEstablishment } from "@/lib/site-data";
 
 export default function HomePage() {
@@ -10,16 +11,7 @@ export default function HomePage() {
   return (
     <>
       <section className="hero-section relative pt-[5.5rem] sm:pt-24 lg:pt-28">
-        <div className="hero-media absolute inset-0">
-          <Image
-            src="/images/schoolimage.jpeg"
-            alt=""
-            fill
-            priority
-            className="object-cover object-center scale-[1.03] brightness-[0.88] saturate-[1.02] contrast-[1.04]"
-          />
-          <div className="hero-overlay absolute inset-0" aria-hidden="true" />
-        </div>
+        <HomeHeroSlideshow />
 
         <div className="site-container relative z-10 flex min-h-[clamp(34rem,72vh,52rem)] items-center justify-center">
           <div className="w-full max-w-4xl px-2 pb-16 text-center text-white">
@@ -172,3 +164,4 @@ export default function HomePage() {
     </>
   );
 }
+
