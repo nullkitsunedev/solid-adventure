@@ -1,6 +1,6 @@
 # School Web App
 
-Next.js 14 + Sanity rebuild of the Newaz Ali Ideal School website.
+Next.js 14 + Sanity rebuild for School website.
 
 This repository contains the public site, a Sanity Studio entry point, and the content model scaffolding needed to move the site off static reference data.
 
