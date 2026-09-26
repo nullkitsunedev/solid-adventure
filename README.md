@@ -1,4 +1,4 @@
-# Newaz Ali Ideal School
+# School Web App
 
 Next.js 14 + Sanity rebuild of the Newaz Ali Ideal School website.
 
